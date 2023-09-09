@@ -1,6 +1,8 @@
 #!/usr/bin/node
 /**
- * Write a script that display the status code of a GET request.
+ * Star Wars Movie Character Count
+ * 
+ * This script prints the number of movies where the character "Wedge Antilles" is present.
  */
 
 
@@ -12,8 +14,9 @@ if (process.argv.length !== 3) {
   process.exit(1);
 }
 
+
 const apiUrl = process.argv[2];
-const characterId = 18;
+const characterId = 18; 
 
 
 request.get(apiUrl, (error, response, body) => {
@@ -29,6 +32,8 @@ request.get(apiUrl, (error, response, body) => {
 
   try {
     const filmData = JSON.parse(body);
+    
+    
     const filmsWithWedgeAntilles = filmData.results.filter((film) =>
       film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)
     );
